@@ -1,0 +1,127 @@
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+  22:47  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+  23:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+  24:27  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+  25:31  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+  27:3   error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\context\TranslationContext.jsx
+  71:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\ToastNotification.jsx
+  41:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\context\AdminContext.jsx
+  234:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  308:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  314:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\hooks\useAdminApi.js
+  937:5  error    Duplicate key 'getPaymentHistory'                                                                                   no-dupe-keys
+  938:5  error    Duplicate key 'getPaymentHistoryStats'                                                                              no-dupe-keys
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Finance.jsx
+  197:30  error  'getVendorRepayments' is not defined                                                                                                                                                        no-undef
+  583:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\services\adminApi.js
+  253:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  311:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  659:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1219:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1344:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1687:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1843:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1887:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1970:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2009:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2063:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2266:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2552:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2691:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2759:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2815:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2961:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3016:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3052:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3086:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3255:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3326:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3364:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3391:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3438:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3560:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\components\ToastNotification.jsx
+  42:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\context\SellerContext.jsx
+  133:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  169:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  170:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  407:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  410:9   error  'process' is not defined                                                                                                        no-undef
+  422:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  425:9   error  'process' is not defined                                                                                                        no-undef
+  431:11  error  'process' is not defined                                                                                                        no-undef
+  438:9   error  'process' is not defined                                                                                                        no-undef
+  444:11  error  'process' is not defined                                                                                                        no-undef
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\SellerDashboard.jsx
+  182:9   error    Unexpected lexical declaration in case block                                                                    no-case-declarations
+  183:9   error    Unexpected lexical declaration in case block                                                                    no-case-declarations
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\ToastNotification.jsx
+  42:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\context\UserContext.jsx
+  82:7   error    Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  423:17  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  429:17  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+  21:30  error    React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render                                                               react-hooks/rules-of-hooks
+  31:35  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                  react-hooks/rules-of-hooks
+  34:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                 react-hooks/rules-of-hooks
+  49:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+  279:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+  314:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  315:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  802:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  803:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  804:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  805:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  806:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  808:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  813:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  823:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  824:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  827:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  904:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  909:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  918:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  961:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  962:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  991:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  992:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  993:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  994:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ToastNotification.jsx
+  4:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  82:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\context\VendorContext.jsx
+  187:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  188:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  191:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  229:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  335:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  338:9   error  'process' is not defined                                                                                                        no-undef
+  350:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  353:9   error  'process' is not defined                                                                                                        no-undef
+  359:11  error  'process' is not defined                                                                                                        no-undef
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\pages\vendor\VendorDashboard.jsx
+  2094:9    error    'fetchDashboardData' is not defined                                                                                                                                                                                                                                                                                                      no-undef
+  2299:9    error    'fetchDashboardData' is not defined                                                                                                                                                                                                                                                                                                      no-undef
+  5681:30   error    'navigateToTab' is not defined                                                                                                                                                                                                                                                                                                           no-undef
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\context\WebsiteContext.jsx
+  82:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  670:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  678:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\CheckoutPage.jsx
+  727:29  error  'modalOrderTotal' is not defined                                                                    no-undef
+  730:28  error  'modalDueNowLabel' is not defined                                                                   no-undef
+  731:29  error  'modalAmountDueNow' is not defined                                                                  no-undef
+  733:20  error  'modalAmountDueLater' is not defined                                                                no-undef
+  735:30  error  'modalDueLaterLabel' is not defined                                                                 no-undef
+  736:31  error  'modalAmountDueLater' is not defined                                                                no-undef
+  761:58  error  'modalAmountDueNow' is not defined                                                                  no-undef
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\utils\translateCommonStrings.js
+  Γ£û 354 problems (333 errors, 21 warnings)

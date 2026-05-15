@@ -1,0 +1,33 @@
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+ERROR: 22:47  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+ERROR: 23:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+ERROR: 24:27  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+ERROR: 25:31  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+ERROR: 27:3   error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Finance.jsx
+ERROR: 583:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+ERROR: 21:30  error    React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render                                                               react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+ERROR: 31:35  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                  react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+ERROR: 34:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                 react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+ERROR: 49:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+FILE: C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+ERROR: 279:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+

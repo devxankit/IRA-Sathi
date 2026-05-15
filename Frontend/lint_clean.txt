@@ -1,0 +1,547 @@
+﻿
+> ira-sathi@0.0.0 lint
+> eslint .
+
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\GoogleMapsLocationPicker.jsx
+  25:10  error    'autocomplete' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                     no-unused-vars
+  99:6   warning  React Hook useEffect has a missing dependency: 'onLocationSelect'. Either include it or remove the dependency array. If 'onLocationSelect' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\components\Trans.jsx
+  22:47  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+  23:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render   react-hooks/rules-of-hooks
+  24:27  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+  25:31  error  React Hook "useRef" is called conditionally. React Hooks must be called in the exact same order in every component render     react-hooks/rules-of-hooks
+  27:3   error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\context\TranslationContext.jsx
+  71:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\AttributeStockForm.jsx
+   16:3   error  'category' is defined but never used                                                no-unused-vars
+   17:3   error  'categoryAttributes' is defined but never used                                      no-unused-vars
+  211:28  error  'index' is defined but never used                                                   no-unused-vars
+  267:15  error  'id' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\CarouselImageUpload.jsx
+  16:79  error  'title' is assigned a value but never used        no-unused-vars
+  16:91  error  'description' is assigned a value but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\CreditPolicyForm.jsx
+  70:9  error  'formatCurrency' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\ImageUpload.jsx
+  20:9  error  'fileInputRefs' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\OrderDetailModal.jsx
+  5:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\OrderEscalationModal.jsx
+  5:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\OutstandingCreditsView.jsx
+  3:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  5:51  error  'onViewDetails' is defined but never used                                  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\ProductForm.jsx
+  278:9   error  'handleAttributeChange' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  473:58  error  'id' is defined but never used                                                                         no-unused-vars
+  812:29  error  '_' is defined but never used                                                                          no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\PurchaseRequestModal.jsx
+  4:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\SellerForm.jsx
+  18:10  error  'autoGenerateId' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\SellerWithdrawalApprovalScreen.jsx
+   1:20  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars
+  22:10  error  'paymentCompleted' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\Sidebar.jsx
+  161:7   error  'colorStyles' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  227:66  error  'onSignOut' is defined but never used                                                        no-unused-vars
+  261:38  error  'Icon' is defined but never used                                                             no-unused-vars
+  261:44  error  'description' is defined but never used                                                      no-unused-vars
+  261:57  error  'color' is defined but never used                                                            no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\ToastNotification.jsx
+   1:10  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                no-unused-vars
+  41:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\UserDetailModal.jsx
+  5:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\VendorWithdrawalApprovalScreen.jsx
+  1:20  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\components\WithdrawalRequestModal.jsx
+   4:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                        no-unused-vars
+  81:9   error  'getSellerWallet' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\context\AdminContext.jsx
+  234:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  308:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  314:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\hooks\useAdminApi.js
+   35:5  warning  React Hook useCallback has an unnecessary dependency: 'dispatch'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+  184:9  error    'updateVendor' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                        no-unused-vars
+  937:5  error    Duplicate key 'getPaymentHistory'                                                                                   no-dupe-keys
+  938:5  error    Duplicate key 'getPaymentHistoryStats'                                                                              no-dupe-keys
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\AdminLogin.jsx
+  87:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Analytics.jsx
+    8:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                   no-unused-vars
+   27:18  error  'setPeriod' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+  133:11  error  'regionWise' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Finance.jsx
+   34:5   error  'applyVendorPenalty' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                          no-unused-vars
+   37:5   error  'getVendors' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                  no-unused-vars
+   43:5   error  'getVendorCreditHistory' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                      no-unused-vars
+   53:10  error  'purchaseRequestsLoading' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                     no-unused-vars
+  197:30  error  'getVendorRepayments' is not defined                                                                                                                                                        no-undef
+  583:45  error  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Offers.jsx
+  25:10  error  'carouselForm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u         no-unused-vars
+  25:24  error  'setCarouselForm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+  34:10  error  'specialOfferForm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  34:28  error  'setSpecialOfferForm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Operations.jsx
+  31:19  error  'ordersState' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+  43:5   error  'getOrderDetails' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Orders.jsx
+   32:32  error  'vendors' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u              no-unused-vars
+   93:11  error  'advanceAmount' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u        no-unused-vars
+  290:9   error  'handleProcessRefund' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\PaymentHistory.jsx
+  56:88  error  'getOrders' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Repayments.jsx
+    7:10  error    'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                               no-unused-vars
+   30:34  error    'navigate' is defined but never used                                                                                                                                                                                                                                    no-unused-vars
+   37:11  error    'success' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                 no-unused-vars
+  161:6   warning  React Hook useCallback has missing dependencies: 'pagination', 'showError', and 'summary'. Either include them or remove the dependency array. You can also do a functional update 'setPagination(p => ...)' if you only need 'pagination' in the 'setPagination' call  react-hooks/exhaustive-deps
+  179:14  error    'error' is defined but never used                                                                                                                                                                                                                                       no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Reviews.jsx
+  21:31  error    'subRoute' is assigned a value but never used                                                                                                                                                                                       no-unused-vars
+  21:48  error    'navigate' is defined but never used                                                                                                                                                                                                no-unused-vars
+  22:23  error    'getReviewDetails' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                    no-unused-vars
+  74:6   warning  React Hook useCallback has missing dependencies: 'filters.hasResponse', 'filters.isApproved', 'filters.isVisible', 'filters.productId', 'filters.rating', and 'filters.userId'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\SellerWithdrawals.jsx
+  10:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                    no-unused-vars
+  11:10  error  'getMaskedBankDetails' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Sellers.jsx
+   41:5  error  'getSellerChangeRequestDetails' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  238:9  error  'handleDeleteSeller' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u             no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Tasks.jsx
+  24:12  error  'filterList' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  24:24  error  'setFilterList' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Users.jsx
+  34:47  error  'showWarning' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\VendorWithdrawals.jsx
+  10:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\pages\Vendors.jsx
+  111:10  error  'actionData' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Admin\services\adminApi.js
+   166:21  error  'summary' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+   253:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+   311:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+   593:58  error  'visibilityData' is defined but never used                                                 no-unused-vars
+   659:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1219:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1344:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1568:36  error  'sellerId' is defined but never used                                                       no-unused-vars
+  1687:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1843:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1887:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  1970:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2009:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2063:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2266:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2510:16  error  'err' is defined but never used                                                            no-unused-vars
+  2552:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2691:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2739:36  error  'vendorId' is defined but never used                                                       no-unused-vars
+  2759:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2815:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  2884:42  error  'vendorId' is defined but never used                                                       no-unused-vars
+  2884:52  error  'penaltyData' is defined but never used                                                    no-unused-vars
+  2961:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3016:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3052:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3086:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3255:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3326:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3364:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3391:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3438:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+  3465:13  error  'topSeller' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  3560:3   error  Unnecessary try/catch wrapper                                                              no-useless-catch
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\components\ToastNotification.jsx
+   1:10  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                no-unused-vars
+  42:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\components\icons.jsx
+   14:29  error  'active' is assigned a value but never used  no-unused-vars
+   27:30  error  'active' is assigned a value but never used  no-unused-vars
+   37:28  error  'active' is assigned a value but never used  no-unused-vars
+  242:28  error  'active' is assigned a value but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\context\SellerContext.jsx
+  133:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  169:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  170:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  204:10  error  'isInitialized' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                   no-unused-vars
+  407:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  410:9   error  'process' is not defined                                                                                                        no-undef
+  422:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  425:9   error  'process' is not defined                                                                                                        no-undef
+  431:11  error  'process' is not defined                                                                                                        no-undef
+  438:9   error  'process' is not defined                                                                                                        no-undef
+  444:11  error  'process' is not defined                                                                                                        no-undef
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\SellerDashboard.jsx
+   61:9   error    'location' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                        no-unused-vars
+   66:20  error    'error' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                           no-unused-vars
+   66:27  error    'info' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                            no-unused-vars
+   66:33  error    'warning' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                         no-unused-vars
+   88:6   warning  React Hook useEffect has a missing dependency: 'validTabs'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+   98:6   warning  React Hook useCallback has a missing dependency: 'validTabs'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  182:9   error    Unexpected lexical declaration in case block                                                                    no-case-declarations
+  183:9   error    Unexpected lexical declaration in case block                                                                    no-case-declarations
+  183:15  error    'balance' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                         no-unused-vars
+  223:28  error    'text' is defined but never used                                                                                no-unused-vars
+  227:43  error    'bankAccount' is defined but never used                                                                         no-unused-vars
+  264:14  error    'err' is defined but never used                                                                                 no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\SellerLogin.jsx
+  172:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\SellerRegister.jsx
+  166:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\views\PerformanceView.jsx
+   4:10  error    'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                               no-unused-vars
+   9:22  error    'profile' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                 no-unused-vars
+  10:11  error    'fetchPerformance' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                        no-unused-vars
+  12:10  error    'loading' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                 no-unused-vars
+  14:9   warning  The 'overview' logical expression could make the dependencies of useMemo Hook (at line 88) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'overview' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\views\ProfileView.jsx
+   1:20  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                        no-unused-vars
+  14:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                               no-unused-vars
+  17:41  error  'onNavigate' is defined but never used                                                                  no-unused-vars
+  19:9   error  'dispatch' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                no-unused-vars
+  20:63  error  'fetchDashboardOverview' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\pages\views\ReferralsView.jsx
+  15:11  error  'dashboard' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Seller\services\sellerApi.js
+   22:12  error  'err' is defined but never used        no-unused-vars
+  705:46  error  'onMessage' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\AuthPromptModal.jsx
+  152:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\BottomNavItem.jsx
+  1:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\MobileShell.jsx
+   57:9    error  'displayPlaceholder' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  107:116  error  'onFilterClick' is defined but never used                                                           no-unused-vars
+  119:11   error  'showThreshold' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\ProductCard.jsx
+  13:9  error  'stockStatusText' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\ToastNotification.jsx
+   1:10  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                no-unused-vars
+  42:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\components\icons.jsx
+  23:28  error  'active' is assigned a value but never used  no-unused-vars
+  38:28  error  'active' is assigned a value but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\context\UserContext.jsx
+   82:7   error    Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  211:10  error    'isInitialized' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                   no-unused-vars
+  406:6   warning  React Hook useEffect has a missing dependency: 'state.favourites.length'. Either include it or remove the dependency array      react-hooks/exhaustive-deps
+  423:17  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  429:17  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\hooks\useUserApi.js
+  281:10  error  'data' is defined but never used  no-unused-vars
+  327:10  error  'data' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\UserDashboard.jsx
+    71:9   error    'location' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                        no-unused-vars
+    81:11  error    'toasts' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                          no-unused-vars
+    81:19  error    'dismissToast' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                    no-unused-vars
+    81:58  error    'info' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                            no-unused-vars
+    92:24  error    'setIsLaptopView' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                 no-unused-vars
+   123:6   warning  React Hook useEffect has a missing dependency: 'validTabs'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+   152:6   warning  React Hook useCallback has a missing dependency: 'validTabs'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   891:9   error    'handleFavouritesClick' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u           no-unused-vars
+  1161:40  error    'productId' is defined but never used                                                                           no-unused-vars
+  1287:34  error    'actionType' is defined but never used                                                                          no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\UserLogin.jsx
+  122:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\UserRegister.jsx
+    9:9   error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   18:10  error  'otp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+   18:15  error  'setOtp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  146:14  error  'err' is defined but never used                                                           no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\AccountView.jsx
+  22:58  error  'isLaptopView' is defined but never used                                                             no-unused-vars
+  27:10  error  'activeSection' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u        no-unused-vars
+  27:25  error  'setActiveSection' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  35:10  error  'deliveryAddressForm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\CarouselProductsView.jsx
+  4:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\CartView.jsx
+  11:68  error  'onAddToCart' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\CheckoutView.jsx
+   37:25  error  'setPaymentMethod' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  300:13  error  'paymentAmount' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\FavouritesView.jsx
+  5:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\HomeView.jsx
+   24:74  error    'onSearchClick' is defined but never used                                                                                                 no-unused-vars
+   24:89  error    'onFilterClick' is defined but never used                                                                                                 no-unused-vars
+   36:10  error    'products' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                  no-unused-vars
+  123:6   warning  React Hook useEffect has missing dependencies: 'fetchCategories' and 'fetchProducts'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\LoginPageView.jsx
+  94:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\ProductDetailView.jsx
+   30:11  error  'translate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u          no-unused-vars
+  321:19  error  '_' is defined but never used                                                                      no-unused-vars
+  534:9   error  'totalVariantPrice' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  565:13  error  'imageGalleryRect' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+  660:9   error  'maxQuantity' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u        no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\pages\views\SignupPageView.jsx
+   68:34  error  'otpCode' is defined but never used  no-unused-vars
+  118:14  error  'err' is defined but never used      no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\User\services\userApi.js
+  876:46  error  'onMessage' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ButtonActionPanel.jsx
+    21:30  error    React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render                                                               react-hooks/rules-of-hooks
+    31:35  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                  react-hooks/rules-of-hooks
+    34:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render                                                                 react-hooks/rules-of-hooks
+    49:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+   279:3   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+   314:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   315:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   753:44  error    'buttonId' is defined but never used                                                                                                                                                         no-unused-vars
+   795:6   warning  React Hook useEffect has a missing dependency: 'getRepaymentHistory'. Either include it or remove the dependency array                                                                       react-hooks/exhaustive-deps
+   802:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   803:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   804:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   805:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   806:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   808:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   813:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   823:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   824:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   827:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   904:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   909:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   918:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   961:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   962:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   991:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   992:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   993:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+   994:9   error    Unexpected lexical declaration in case block                                                                                                                                                 no-case-declarations
+  1027:34  error    'buttonId' is defined but never used                                                                                                                                                         no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\OrderPartialEscalationModal.jsx
+  26:6   warning  React Hook useEffect has a missing dependency: 'loadOrderDetails'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  63:14  error    'err' is defined but never used                                                                                      no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\ToastNotification.jsx
+   4:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  82:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\components\icons.jsx
+   14:27  error  'active' is assigned a value but never used  no-unused-vars
+   27:28  error  'active' is assigned a value but never used  no-unused-vars
+   42:30  error  'active' is assigned a value but never used  no-unused-vars
+   53:30  error  'active' is assigned a value but never used  no-unused-vars
+  180:28  error  'active' is assigned a value but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\context\VendorContext.jsx
+  187:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  188:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  191:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  229:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  276:10  error  'isInitialized' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                   no-unused-vars
+  279:7   error  'showToast' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                       no-unused-vars
+  335:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  338:9   error  'process' is not defined                                                                                                        no-undef
+  350:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  353:9   error  'process' is not defined                                                                                                        no-undef
+  359:11  error  'process' is not defined                                                                                                        no-undef
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\hooks\useVendorApi.js
+  40:5  warning  React Hook useCallback has an unnecessary dependency: 'dispatch'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\pages\VendorLogin.jsx
+  156:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\pages\VendorRegister.jsx
+   22:10  error  'otp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+   22:15  error  'setOtp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  242:14  error  'err' is defined but never used                                                         no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\pages\vendor\VendorDashboard.jsx
+    75:20   error    'dashboard' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                no-unused-vars
+    80:254  error    'getBankAccounts' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                          no-unused-vars
+   122:6    warning  React Hook useEffect has a missing dependency: 'validTabs'. Either include it or remove the dependency array                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+   136:6    warning  React Hook useCallback has a missing dependency: 'validTabs'. Either include it or remove the dependency array                                                                                                                                                                                                                           react-hooks/exhaustive-deps
+   207:6    warning  React Hook useEffect has missing dependencies: 'dispatch', 'fetchDashboardData', 'fetchProfile', 'location.pathname', 'navigate', 'onLogout', and 'profile?.id'. Either include them or remove the dependency array. If 'onLogout' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+   361:14   error    'err' is defined but never used                                                                                                                                                                                                                                                                                                          no-unused-vars
+  1367:16   error    'err' is defined but never used                                                                                                                                                                                                                                                                                                          no-unused-vars
+  1381:14   error    'err' is defined but never used                                                                                                                                                                                                                                                                                                          no-unused-vars
+  1733:22   error    'profile' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                  no-unused-vars
+  1744:10   error    'orderError' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                               no-unused-vars
+  1764:10   error    'isPurchaseHistoryLoading' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                 no-unused-vars
+  2017:9    error    'handleOrderStock' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                         no-unused-vars
+  2023:9    error    'handleOrderSubmit' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                        no-unused-vars
+  2094:9    error    'fetchDashboardData' is not defined                                                                                                                                                                                                                                                                                                      no-undef
+  2243:7    error    'duesWarning' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                              no-unused-vars
+  2299:9    error    'fetchDashboardData' is not defined                                                                                                                                                                                                                                                                                                      no-undef
+  2382:9    error    'stockProgress' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                            no-unused-vars
+  2418:11   error    'creditLimit' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                              no-unused-vars
+  2419:11   error    'projectedCredit' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                          no-unused-vars
+  2422:11   error    'canSubmitOrder' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                           no-unused-vars
+  2597:11   error    'pendingDeliveryRequests' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                  no-unused-vars
+  2603:11   error    'formatEta' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                no-unused-vars
+  2690:25   error    'hasSelectedVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                      no-unused-vars
+  2936:27   error    'quantity' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                 no-unused-vars
+  3450:21   error    'adminStockStatus' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                         no-unused-vars
+  3733:9    error    'orders' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                   no-unused-vars
+  5500:21   error    'setActiveTab' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                             no-unused-vars
+  5681:30   error    'navigateToTab' is not defined                                                                                                                                                                                                                                                                                                           no-undef
+  6040:36   error    'onNavigate' is defined but never used                                                                                                                                                                                                                                                                                                   no-unused-vars
+  6041:9    error    'dispatch' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                 no-unused-vars
+  6043:11   error    'toasts' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                   no-unused-vars
+  6043:19   error    'dismissToast' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                             no-unused-vars
+  6050:23   error    'setHistoryPage' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                           no-unused-vars
+  6051:22   error    'setOrdersPage' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                            no-unused-vars
+  6059:6    warning  React Hook useEffect has missing dependencies: 'loadBankAccounts' and 'loadEarningsData'. Either include them or remove the dependency array                                                                                                                                                                                             react-hooks/exhaustive-deps
+  6084:14   error    'err' is defined but never used                                                                                                                                                                                                                                                                                                          no-unused-vars
+  6522:31   error    'bankAccount' is defined but never used                                                                                                                                                                                                                                                                                                  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\Vendor\pages\vendor\VendorLogin.jsx
+  108:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\context\WebsiteContext.jsx
+   82:7   error  Unexpected lexical declaration in case block                                                                                    no-case-declarations
+  670:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  678:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\hooks\useWebsiteApi.js
+  483:10  error  'data' is defined but never used  no-unused-vars
+  529:10  error  'data' is defined but never used  no-unused-vars
+  543:10  error  'data' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\AccountPage.jsx
+   63:11  error  'profile' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  527:11  error  'profile' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  527:20  error  'addresses' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  570:9   error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\CartPage.jsx
+  14:9   error  'dispatch' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u           no-unused-vars
+  16:58  error  'getProductDetails' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\CategoryProductsPage.jsx
+  6:13  error  'websiteApi' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\CheckoutPage.jsx
+   22:26  error  'assignedVendor' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+   26:10  error  'summaryExpanded' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+   26:27  error  'setSummaryExpanded' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   28:25  error  'setPaymentMethod' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  264:13  error  'paymentAmount' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+  727:29  error  'modalOrderTotal' is not defined                                                                    no-undef
+  730:28  error  'modalDueNowLabel' is not defined                                                                   no-undef
+  731:29  error  'modalAmountDueNow' is not defined                                                                  no-undef
+  733:20  error  'modalAmountDueLater' is not defined                                                                no-undef
+  735:30  error  'modalDueLaterLabel' is not defined                                                                 no-undef
+  736:31  error  'modalAmountDueLater' is not defined                                                                no-undef
+  761:58  error  'modalAmountDueNow' is not defined                                                                  no-undef
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\FavouritesPage.jsx
+    8:10  error  'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  133:33  error  'e' is defined but never used                                              no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\HomePage.jsx
+   25:28  error    'fetchPopularProducts' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                no-unused-vars
+   28:10  error    'selectedCategory' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                    no-unused-vars
+   78:6   warning  React Hook useEffect has a missing dependency: 'fetchCategories'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  173:9   error    'handleCategoryClick' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                 no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\LoginPage.jsx
+  111:14  error  'err' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\ProductDetailPage.jsx
+   16:61  error  'fetchProducts' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+  110:19  error  '_' is defined but never used                                                                      no-unused-vars
+  276:9   error  'totalVariantPrice' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\ProductListingPage.jsx
+    1:31  error    'useMemo' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                      no-unused-vars
+    1:40  error    'useRef' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                       no-unused-vars
+    6:13  error    'websiteApi' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                   no-unused-vars
+    8:10  error    'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                           no-unused-vars
+   44:6   warning  React Hook useEffect has a missing dependency: 'fetchCategories'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  113:6   warning  React Hook useEffect has a missing dependency: 'fetchProducts'. Either include it or remove the dependency array    react-hooks/exhaustive-deps
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\pages\RegisterPage.jsx
+   18:10  error  'otp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+   18:15  error  'setOtp' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  146:14  error  'err' is defined but never used                                                         no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\modules\website\services\websiteApi.js
+  805:46  error  'onMessage' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\utils\razorpay.js
+  12:30  error  'keyId' is defined but never used  no-unused-vars
+
+C:\Users\HP\OneDrive\Desktop\IRA SATHI New\FarmCommerce\Frontend\src\utils\translateCommonStrings.js
+  13:11  error  'isEnglish' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 354 problems (333 errors, 21 warnings)
+
