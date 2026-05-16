@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fcmController = require('../controllers/fcmController');
-const { authorizeUser, authorizeVendor, authorizeSeller, authorizeAdmin } = require('../middleware/auth');
+const { protect, authorizeAdmin } = require('../middleware/auth');
 const PushNotificationLog = require('../models/PushNotificationLog');
 const {
     sendNotificationToUser,
@@ -24,37 +24,38 @@ const Seller = require('../models/Seller');
 
 // Unified authentication middleware that works for all user types
 const authenticate = (req, res, next) => {
-    // Try to authenticate as User first
-    authorizeUser(req, res, (err) => {
-        if (!err && req.user) {
+    // 1. Verify JWT token using protect (attaches decoded payload to req.user)
+    protect(req, res, (err) => {
+        if (err || !req.user) {
+            // Not even a valid token
+            return res.status(401).json({
+                success: false,
+                message: 'Authentication required',
+            });
+        }
+
+        // 2. Identify user type and ID from the role in the token
+        const role = req.user.role;
+
+        if (role === 'user') {
             req.user.userType = 'user';
             req.user.userId = req.user.userId || req.user.id;
             return next();
-        }
-
-        // Try Vendor
-        authorizeVendor(req, res, (err) => {
-            if (!err && req.user) {
-                req.user.userType = 'vendor';
-                req.user.userId = req.user.vendorId || req.user.userId || req.user.id;
-                return next();
-            }
-
-            // Try Seller
-            authorizeSeller(req, res, (err) => {
-                if (!err && req.user) {
-                    req.user.userType = 'seller';
-                    req.user.userId = req.user.sellerId || req.user.userId || req.user.id;
-                    return next();
-                }
-
-                // All authentication methods failed
-                return res.status(401).json({
-                    success: false,
-                    message: 'Authentication required',
-                });
+        } else if (role === 'vendor') {
+            req.user.userType = 'vendor';
+            req.user.userId = req.user.vendorId || req.user.id;
+            return next();
+        } else if (role === 'seller') {
+            req.user.userType = 'seller';
+            req.user.userId = req.user.sellerId || req.user.id;
+            return next();
+        } else {
+            // Token is valid but role is not one of the allowed types
+            return res.status(403).json({
+                success: false,
+                message: 'Invalid user role for FCM registration',
             });
-        });
+        }
     });
 };
 
