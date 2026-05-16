@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const fcmController = require('../controllers/fcmController');
-const { protect, authorizeAdmin } = require('../middleware/auth');
+const jwt = require('jsonwebtoken');
+const { authorizeAdmin } = require('../middleware/auth');
+const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key_change_in_production';
 const PushNotificationLog = require('../models/PushNotificationLog');
 const {
     sendNotificationToUser,
@@ -23,40 +25,61 @@ const Seller = require('../models/Seller');
  */
 
 // Unified authentication middleware that works for all user types
-const authenticate = (req, res, next) => {
-    // 1. Verify JWT token using protect (attaches decoded payload to req.user)
-    protect(req, res, (err) => {
-        if (err || !req.user) {
-            // Not even a valid token
+const authenticate = async (req, res, next) => {
+    try {
+        let token;
+
+        // 1. Get token from Authorization header
+        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+
+        if (!token) {
             return res.status(401).json({
                 success: false,
                 message: 'Authentication required',
             });
         }
 
-        // 2. Identify user type and ID from the role in the token
-        const role = req.user.role;
+        // 2. Verify token
+        let decoded;
+        try {
+            decoded = jwt.verify(token, JWT_SECRET);
+        } catch (err) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid or expired token',
+            });
+        }
+
+        // 3. Attach user info to request
+        req.user = decoded;
+        const role = decoded.role;
 
         if (role === 'user') {
             req.user.userType = 'user';
-            req.user.userId = req.user.userId || req.user.id;
-            return next();
+            req.user.userId = decoded.userId || decoded.id;
         } else if (role === 'vendor') {
             req.user.userType = 'vendor';
-            req.user.userId = req.user.vendorId || req.user.id;
-            return next();
+            req.user.userId = decoded.vendorId || decoded.id;
         } else if (role === 'seller') {
             req.user.userType = 'seller';
-            req.user.userId = req.user.sellerId || req.user.id;
-            return next();
+            req.user.userId = decoded.sellerId || decoded.id;
         } else {
-            // Token is valid but role is not one of the allowed types
             return res.status(403).json({
                 success: false,
                 message: 'Invalid user role for FCM registration',
             });
         }
-    });
+
+        next();
+    } catch (error) {
+        console.error('FCM Auth Middleware Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error during authentication',
+        });
+    }
 };
 
 /**
