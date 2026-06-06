@@ -11,7 +11,7 @@ class SMSIndiaHubService {
     this.baseUrl = 'https://cloud.smsindiahub.in/vendorsms/pushsms.aspx';
     
     // Test phone numbers that should bypass SMS and use default OTP 123456
-    this.testPhoneNumbers = ['9685974247', '9981331303', '9755620716', '+919685974247', '+919981331303', '+919755620716', '919685974247', '919981331303', '919755620716'];
+    this.testPhoneNumbers = ['8878495502', '+918878495502', '9685974247', '9981331303', '9755620716', '+919685974247', '+919981331303', '+919755620716', '919685974247', '919981331303', '919755620716'];
     this.defaultTestOTP = '123456';
     
     if (!this.apiKey) {

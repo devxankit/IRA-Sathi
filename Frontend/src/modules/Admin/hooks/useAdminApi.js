@@ -61,6 +61,7 @@ export function useAdminApi() {
       return callApi(adminApi.getProducts, params).then((result) => {
         if (result.data) {
           dispatch({ type: 'SET_PRODUCTS_DATA', payload: result.data })
+          dispatch({ type: 'SET_PRODUCTS_UPDATED', payload: false })
         }
         return result
       })
@@ -97,7 +98,7 @@ export function useAdminApi() {
   const deleteProduct = useCallback(
     (productId) => {
       return callApi(adminApi.deleteProduct, productId).then((result) => {
-        if (result.data) {
+        if (result.success) {
           dispatch({ type: 'SET_PRODUCTS_UPDATED', payload: true })
         }
         return result

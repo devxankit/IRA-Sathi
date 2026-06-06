@@ -1,10 +1,11 @@
-﻿import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Layers3, MapPin, ToggleRight, Edit2, Trash2, ArrowLeft, Package, MoreVertical } from 'lucide-react'
 import { DataTable } from '../components/DataTable'
 import { StatusBadge } from '../components/StatusBadge'
 import { FilterBar } from '../components/FilterBar'
 import { ProductForm } from '../components/ProductForm'
 import { ProductAttributesModal } from '../components/ProductAttributesModal'
+import { ConfirmationModal } from '../components/ConfirmationModal'
 import { useAdminState } from '../context/AdminContext'
 import { useAdminApi } from '../hooks/useAdminApi'
 import { useToast } from '../components/ToastNotification'
@@ -34,6 +35,7 @@ export function ProductsPage({ subRoute = null, navigate }) {
   const [showAttributesModal, setShowAttributesModal] = useState(false)
   const [selectedProductForAttributes, setSelectedProductForAttributes] = useState(null)
   const [openActionsDropdown, setOpenActionsDropdown] = useState(null)
+  const [productToDelete, setProductToDelete] = useState(null)
 
   const regionColors = [
     { border: 'border-[rgba(1,120,39,0.25)]', bg: 'bg-gradient-to-br from-[rgba(1,120,39,0.04)] to-[rgba(1,120,39,0.1)]/50', text: 'text-[#017827]', progress: 'bg-gradient-to-r from-[#017827] to-[#0a9937]' },
@@ -127,25 +129,30 @@ export function ProductsPage({ subRoute = null, navigate }) {
     setSelectedProduct(originalProduct)
   }
 
-  const handleDeleteProduct = async (productId) => {
-    if (window.confirm('Are you sure you want to delete this product? This action cannot be undone.')) {
-      try {
-        const result = await deleteProduct(productId)
-        if (result.data) {
-          fetchProducts()
-          success('Product deleted successfully!')
-        } else if (result.error) {
-          const errorMessage = result.error.message || 'Failed to delete product'
-          // Check if it's a warning (product has active assignments)
-          if (errorMessage.includes('active vendor assignment')) {
-            showWarning(errorMessage, 6000)
-          } else {
-            showError(errorMessage, 5000)
-          }
+  const handleDeleteProduct = (product) => {
+    const originalProduct = products.data?.products?.find((p) => p.id === product.id) || product
+    setProductToDelete(originalProduct)
+  }
+
+  const confirmDeleteProduct = async () => {
+    if (!productToDelete) return
+    try {
+      const result = await deleteProduct(productToDelete.id)
+      if (result.success) {
+        fetchProducts()
+        success('Product deleted successfully!')
+      } else if (result.error) {
+        const errorMessage = result.error.message || 'Failed to delete product'
+        if (errorMessage.includes('active vendor assignment')) {
+          showWarning(errorMessage, 6000)
+        } else {
+          showError(errorMessage, 5000)
         }
-      } catch (error) {
-        showError(error.message || 'Failed to delete product', 5000)
       }
+    } catch (error) {
+      showError(error.message || 'Failed to delete product', 5000)
+    } finally {
+      setProductToDelete(null)
     }
   }
 
@@ -313,7 +320,7 @@ export function ProductsPage({ subRoute = null, navigate }) {
             label: 'Delete Product',
             icon: Trash2,
             onClick: () => {
-              handleDeleteProduct(row.id)
+              handleDeleteProduct(originalProduct)
               setOpenActionsDropdown(null)
             },
             className: 'text-red-700 hover:bg-red-50'
@@ -468,6 +475,19 @@ export function ProductsPage({ subRoute = null, navigate }) {
           setSelectedProductForAttributes(null)
         }}
         product={selectedProductForAttributes}
+      />
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={!!productToDelete}
+        onClose={() => setProductToDelete(null)}
+        onConfirm={confirmDeleteProduct}
+        title="Delete Product"
+        message={`Are you sure you want to delete "${productToDelete?.name}"? This action cannot be undone and will permanently remove the product from the catalogue.`}
+        type="danger"
+        confirmLabel="Delete"
+        cancelLabel="Cancel"
+        loading={loading}
       />
 
       <div className="space-y-6">
