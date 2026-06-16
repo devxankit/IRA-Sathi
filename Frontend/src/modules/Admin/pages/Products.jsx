@@ -475,6 +475,11 @@ export function ProductsPage({ subRoute = null, navigate }) {
           setSelectedProductForAttributes(null)
         }}
         product={selectedProductForAttributes}
+        onEdit={() => {
+          if (selectedProductForAttributes) {
+            handleEditProduct(selectedProductForAttributes)
+          }
+        }}
       />
 
       {/* Delete Confirmation Modal */}

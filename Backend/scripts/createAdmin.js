@@ -20,6 +20,7 @@ const createAdmin = async () => {
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
     
     const adminData = {
+      adminId: 'ADM-' + Math.floor(1000 + Math.random() * 9000),
       phone: adminPhone,
       password: adminPassword, // Will be hashed automatically
       name: 'Admin',
