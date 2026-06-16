@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Calendar, Package, IndianRupee, Eye, EyeOff, Tag, X, Layers } from 'lucide-react'
 import { cn } from '../../../lib/cn'
 import { ImageUpload } from './ImageUpload'
@@ -6,21 +6,7 @@ import { AttributeStockForm } from './AttributeStockForm'
 
 const STOCK_UNITS = ['mg', 'g', 'kg', 'ml', 'L', 'bag', 'unit', 'packet', 'bottle']
 
-// Fertilizer Categories (This platform is for fertilizers only)
-const FERTILIZER_CATEGORIES = [
-  { value: 'npk', label: 'NPK Fertilizers', description: 'Balanced NPK fertilizers' },
-  { value: 'nitrogen', label: 'Nitrogen Fertilizers', description: 'High nitrogen content' },
-  { value: 'phosphorus', label: 'Phosphorus Fertilizers', description: 'Phosphorus-rich fertilizers' },
-  { value: 'potassium', label: 'Potassium Fertilizers', description: 'Potassium fertilizers' },
-  { value: 'organic', label: 'Organic Fertilizers', description: 'Natural and organic fertilizers' },
-  { value: 'biofertilizer', label: 'Biofertilizers', description: 'Microbial fertilizers' },
-  { value: 'micronutrient', label: 'Micronutrient Fertilizers', description: 'Essential trace elements' },
-  { value: 'liquid', label: 'Liquid Fertilizers', description: 'Water-soluble fertilizers' },
-  { value: 'granular', label: 'Granular Fertilizers', description: 'Solid granular fertilizers' },
-  { value: 'foliar', label: 'Foliar Fertilizers', description: 'Applied to plant leaves' },
-  { value: 'soil-conditioner', label: 'Soil Conditioners', description: 'Improve soil structure' },
-  { value: 'specialty', label: 'Specialty Fertilizers', description: 'Specialized fertilizers' },
-]
+import { useAdminApi } from '../hooks/useAdminApi'
 
 // Category-specific attributes configuration
 const CATEGORY_ATTRIBUTES = {
@@ -89,7 +75,7 @@ const CATEGORY_ATTRIBUTES = {
 export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
   const [formData, setFormData] = useState({
     name: '',
-    category: 'npk', // Default to NPK
+    category: '', // No default
     shortDescription: '', // Short description for product cards
     description: '', // Long description for product details page
     actualStock: '',
@@ -109,6 +95,70 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
   const [tagInput, setTagInput] = useState('')
   const [errors, setErrors] = useState({})
   const [showAttributeStockForm, setShowAttributeStockForm] = useState(false)
+  
+  // Dynamic categories state
+  const { getCategories, createCategory } = useAdminApi()
+  const [categories, setCategories] = useState([])
+  const [isAddingCategory, setIsAddingCategory] = useState(false)
+  const [newCategoryLabel, setNewCategoryLabel] = useState('')
+  const [newCategoryDesc, setNewCategoryDesc] = useState('')
+  const [isSavingCategory, setIsSavingCategory] = useState(false)
+
+  // Fetch categories on mount
+  useEffect(() => {
+    let mounted = true;
+    const fetchCategories = async () => {
+      try {
+        const res = await getCategories()
+        if (res.success && res.data && res.data.length > 0) {
+          if (mounted) {
+            setCategories(res.data.map(c => ({
+              value: c.id,
+              label: c.label,
+              description: c.description
+            })))
+            if (!formData.category && !product) {
+               setFormData(prev => ({ ...prev, category: res.data[0].id }))
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch categories:', err)
+      }
+    }
+    fetchCategories()
+    return () => { mounted = false }
+  }, [getCategories])
+
+  const handleAddCategory = async () => {
+    if (!newCategoryLabel.trim()) return;
+    setIsSavingCategory(true)
+    try {
+      const res = await createCategory({
+        label: newCategoryLabel.trim(),
+        description: newCategoryDesc.trim()
+      })
+      if (res.success && res.data) {
+        const newCat = {
+          value: res.data.id,
+          label: res.data.label,
+          description: res.data.description
+        }
+        setCategories(prev => [...prev, newCat].sort((a, b) => a.label.localeCompare(b.label)))
+        setFormData(prev => ({ ...prev, category: newCat.value }))
+        setIsAddingCategory(false)
+        setNewCategoryLabel('')
+        setNewCategoryDesc('')
+      } else {
+        alert(res.error?.message || res.message || 'Failed to create category')
+      }
+    } catch (err) {
+      console.error(err)
+      alert('An error occurred while creating category')
+    } finally {
+      setIsSavingCategory(false)
+    }
+  }
 
   useEffect(() => {
     if (product) {
@@ -517,24 +567,73 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
         <label htmlFor="category" className="mb-2 block text-sm font-bold text-gray-900">
           Fertilizer Category <span className="text-red-500">*</span>
         </label>
-        <select
-          id="category"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          className={cn(
-            'w-full rounded-xl border px-4 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2',
-            errors.category
-              ? 'border-red-300 bg-red-50 focus:ring-red-500/50'
-              : 'border-gray-300 bg-white focus:border-purple-500 focus:ring-purple-500/50',
+        
+        <div className="flex gap-2">
+          {!isAddingCategory ? (
+            <>
+              <select
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className={cn(
+                  'flex-1 rounded-xl border px-4 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2',
+                  errors.category
+                    ? 'border-red-300 bg-red-50 focus:ring-red-500/50'
+                    : 'border-gray-300 bg-white focus:border-purple-500 focus:ring-purple-500/50',
+                )}
+              >
+                {categories.length === 0 && <option value="" disabled>No categories found</option>}
+          {categories.map((cat) => (
+                  <option key={cat.value} value={cat.value}>
+                    {cat.label} - {cat.description}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={() => setIsAddingCategory(true)}
+                className="rounded-xl border border-purple-300 bg-purple-50 px-4 py-2 text-sm font-bold text-purple-700 transition-all hover:bg-purple-100"
+              >
+                + Add Category
+              </button>
+            </>
+          ) : (
+            <div className="flex flex-col gap-2 w-full p-3 border border-purple-200 rounded-xl bg-purple-50">
+              <input
+                type="text"
+                placeholder="Category Name (e.g., Micronutrients)"
+                value={newCategoryLabel}
+                onChange={e => setNewCategoryLabel(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              />
+              <input
+                type="text"
+                placeholder="Description (optional)"
+                value={newCategoryDesc}
+                onChange={e => setNewCategoryDesc(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              />
+              <div className="flex gap-2 justify-end">
+                <button
+                  type="button"
+                  onClick={() => setIsAddingCategory(false)}
+                  className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleAddCategory}
+                  disabled={isSavingCategory || !newCategoryLabel.trim()}
+                  className="px-4 py-1.5 rounded-lg bg-purple-600 text-white text-sm font-bold disabled:opacity-50"
+                >
+                  {isSavingCategory ? 'Saving...' : 'Save Category'}
+                </button>
+              </div>
+            </div>
           )}
-        >
-          {FERTILIZER_CATEGORIES.map((cat) => (
-            <option key={cat.value} value={cat.value}>
-              {cat.label} - {cat.description}
-            </option>
-          ))}
-        </select>
+        </div>
         {errors.category && <p className="mt-1 text-xs text-red-600">{errors.category}</p>}
       </div>
 

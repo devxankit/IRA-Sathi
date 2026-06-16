@@ -269,6 +269,34 @@ export async function getDashboardData(params = {}) {
 }
 
 // ============================================================================
+// CATEGORY MANAGEMENT APIs
+// ============================================================================
+
+/**
+ * Get All Categories
+ * GET /categories
+ * 
+ * @returns {Promise<Object>}
+ */
+export async function getCategories() {
+  return apiRequest('/categories')
+}
+
+/**
+ * Create Category
+ * POST /categories
+ * 
+ * @param {Object} categoryData - { label: string, description?: string }
+ * @returns {Promise<Object>}
+ */
+export async function createCategory(categoryData) {
+  return apiRequest('/categories', {
+    method: 'POST',
+    body: JSON.stringify(categoryData),
+  })
+}
+
+// ============================================================================
 // PRODUCT MANAGEMENT APIs
 // ============================================================================
 

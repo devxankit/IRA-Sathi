@@ -544,8 +544,17 @@ exports.loginWithOtp = async (req, res, next) => {
       });
     }
 
-    // Check if user is blocked
-    if (user.isBlocked || !user.isActive) {
+    // Check if user is pending registration
+    if (!user.isActive && user.name === 'Pending Registration') {
+      return res.status(404).json({
+        success: false,
+        message: 'User not fully registered. Please register first.',
+        requiresRegistration: true, // Flag for frontend to redirect
+      });
+    }
+
+    // Check if user is explicitly blocked
+    if (user.isBlocked || (!user.isActive && user.name !== 'Pending Registration')) {
       return res.status(403).json({
         success: false,
         message: 'Your account has been blocked or deactivated. Please contact support.',

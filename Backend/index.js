@@ -11,6 +11,7 @@ const vendorRoutes = require('./routes/vendor');
 const sellerRoutes = require('./routes/seller');
 const adminRoutes = require('./routes/admin');
 const fcmRoutes = require('./routes/fcm');
+const categoryRoutes = require('./routes/categoryRoutes');
 // const utilsRoutes = require('./routes/utils');
 
 // Import config
@@ -80,6 +81,7 @@ app.use('/api/vendors', vendorRoutes);
 app.use('/api/sellers', sellerRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/fcm', fcmRoutes);
+app.use('/api/categories', categoryRoutes);
 // app.use('/api/utils', utilsRoutes); // Deprecated: Frontend uses Google Cloud Translation API directly
 
 // 404 handler (must come before error handler)

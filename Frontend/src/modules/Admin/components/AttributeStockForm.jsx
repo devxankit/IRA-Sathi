@@ -135,45 +135,9 @@ export function AttributeStockForm({
   // Update custom attribute label
   const handleCustomAttributeLabelChange = (stockId, attrKey, newLabel) => {
     setCustomAttributes(prev => {
-      const stockAttrs = prev[stockId] || []
-      const updated = stockAttrs.map(attr => {
+      const currentAttrs = prev[stockId] || []
+      const updated = currentAttrs.map(attr => {
         if (attr.key === attrKey) {
-          // If label changed, migrate the value to new label key
-          const currentStock = stocks.find(s => s.id === stockId)
-          if (currentStock) {
-            const oldLabel = attr.label
-            const oldValue = oldLabel ? currentStock.attributes[oldLabel] : currentStock.attributes[attrKey]
-
-            if (oldValue && newLabel !== oldLabel) {
-              // Update stock attributes: remove old key, add new label as key
-              setStocks(stocks.map(stock => {
-                if (stock.id === stockId) {
-                  const newAttrs = { ...stock.attributes }
-                  // Remove old keys
-                  if (oldLabel) delete newAttrs[oldLabel]
-                  if (attrKey !== newLabel) delete newAttrs[attrKey]
-                  // Add with new label as key
-                  newAttrs[newLabel] = oldValue
-                  return { ...stock, attributes: newAttrs }
-                }
-                return stock
-              }))
-            } else if (newLabel && !oldLabel) {
-              // First time setting label - migrate from internal key to label
-              const value = currentStock.attributes[attrKey]
-              if (value) {
-                setStocks(stocks.map(stock => {
-                  if (stock.id === stockId) {
-                    const newAttrs = { ...stock.attributes }
-                    delete newAttrs[attrKey]
-                    newAttrs[newLabel] = value
-                    return { ...stock, attributes: newAttrs }
-                  }
-                  return stock
-                }))
-              }
-            }
-          }
           return { ...attr, label: newLabel }
         }
         return attr

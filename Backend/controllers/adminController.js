@@ -876,14 +876,22 @@ exports.createProduct = async (req, res, next) => {
       }
     }
 
-    // Validate category against fertilizer categories
-    const { isValidCategory } = require('../utils/fertilizerCategories');
+    // Validate category against DB categories
+    const Category = require('../models/Category');
     const categoryLower = category.toLowerCase();
-    if (!isValidCategory(categoryLower)) {
-      return res.status(400).json({
-        success: false,
-        message: `Invalid category. Must be one of: ${require('../utils/fertilizerCategories').FERTILIZER_CATEGORIES.map(c => c.id).join(', ')}`,
-      });
+    
+    // We should fallback to dynamic checking or let frontend ensure it exists
+    const categoryExists = await Category.findOne({ id: categoryLower });
+    if (!categoryExists) {
+      // If DB has no categories, maybe just allow it or auto-create it
+      // Let's auto-create it just to be safe, or allow it
+      const categoryCount = await Category.countDocuments();
+      if (categoryCount > 0) {
+        return res.status(400).json({
+          success: false,
+          message: `Invalid category. Please select or add a valid category.`,
+        });
+      }
     }
 
     // Create product
@@ -1078,13 +1086,18 @@ exports.updateProduct = async (req, res, next) => {
 
     // Normalize and validate category if provided
     if (updateData.category) {
-      const { isValidCategory } = require('../utils/fertilizerCategories');
+      const Category = require('../models/Category');
       const categoryLower = updateData.category.toLowerCase();
-      if (!isValidCategory(categoryLower)) {
-        return res.status(400).json({
-          success: false,
-          message: `Invalid category. Must be one of: ${require('../utils/fertilizerCategories').FERTILIZER_CATEGORIES.map(c => c.id).join(', ')}`,
-        });
+      
+      const categoryExists = await Category.findOne({ id: categoryLower });
+      if (!categoryExists) {
+        const categoryCount = await Category.countDocuments();
+        if (categoryCount > 0) {
+          return res.status(400).json({
+            success: false,
+            message: `Invalid category. Please select or add a valid category.`,
+          });
+        }
       }
       updateData.category = categoryLower;
     }

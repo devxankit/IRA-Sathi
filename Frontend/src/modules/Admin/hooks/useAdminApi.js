@@ -893,6 +893,8 @@ export function useAdminApi() {
     // Products
     getProducts,
     getProductDetails,
+    getCategories: () => callApi(adminApi.getCategories),
+    createCategory: (data) => callApi(adminApi.createCategory, data),
     createProduct,
     updateProduct,
     deleteProduct,

@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { X, Package, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react'
 import { cn } from '../../../lib/cn'
 
@@ -6,7 +6,7 @@ import { cn } from '../../../lib/cn'
  * Product Attributes Modal
  * Displays all attribute combinations for a product in a carousel/viewer format
  */
-export function ProductAttributesModal({ isOpen, onClose, product }) {
+export function ProductAttributesModal({ isOpen, onClose, product, onEdit }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   if (!isOpen || !product) return null
@@ -223,13 +223,27 @@ export function ProductAttributesModal({ isOpen, onClose, product }) {
                 ? `Viewing variant ${currentIndex + 1} of ${attributeStocks.length}`
                 : 'This product uses standard pricing and stock management'}
             </p>
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-2 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg"
-            >
-              Close
-            </button>
+            <div className="flex gap-3">
+              {onEdit && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose()
+                    onEdit()
+                  }}
+                  className="rounded-xl border border-purple-300 bg-purple-50 px-6 py-2 text-sm font-bold text-purple-700 transition-all hover:bg-purple-100"
+                >
+                  Manage Variants
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-2 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
