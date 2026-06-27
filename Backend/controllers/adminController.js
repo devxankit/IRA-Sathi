@@ -671,7 +671,7 @@ exports.getProducts = async (req, res, next) => {
   try {
     const {
       page = 1,
-      limit = 20,
+      limit = 500,
       category,
       isActive,
       search,
@@ -1089,14 +1089,17 @@ exports.updateProduct = async (req, res, next) => {
       const Category = require('../models/Category');
       const categoryLower = updateData.category.toLowerCase();
       
-      const categoryExists = await Category.findOne({ id: categoryLower });
-      if (!categoryExists) {
-        const categoryCount = await Category.countDocuments();
-        if (categoryCount > 0) {
-          return res.status(400).json({
-            success: false,
-            message: `Invalid category. Please select or add a valid category.`,
-          });
+      // Skip validation if category is unchanged (same as what's already on the product)
+      if (categoryLower !== product.category) {
+        const categoryExists = await Category.findOne({ id: categoryLower });
+        if (!categoryExists) {
+          const categoryCount = await Category.countDocuments();
+          if (categoryCount > 0) {
+            return res.status(400).json({
+              success: false,
+              message: `Invalid category. Please select or add a valid category.`,
+            });
+          }
         }
       }
       updateData.category = categoryLower;

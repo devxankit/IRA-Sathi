@@ -1,21 +1,29 @@
 const Category = require('../models/Category');
+const { FERTILIZER_CATEGORIES } = require('../utils/fertilizerCategories');
+
+// Hardcoded fallback so categories always load even when MongoDB is unreachable
+const FALLBACK_CATEGORIES = FERTILIZER_CATEGORIES.map(c => ({
+  id: c.id,
+  label: c.name || c.label,
+  description: c.description || ''
+}));
 
 // Get all categories
 exports.getCategories = async (req, res) => {
   try {
     const categories = await Category.find({}).sort({ label: 1 });
     
-    // Fallback: If DB is empty, maybe return the old hardcoded ones and seed them
+    // Fallback: If DB is empty, seed with hardcoded list and return them
     if (categories.length === 0) {
-      const { FERTILIZER_CATEGORIES } = require('../utils/fertilizerCategories');
-      // Seed them
-      await Category.insertMany(FERTILIZER_CATEGORIES.map(c => ({
-        id: c.id,
-        label: c.label,
-        description: c.description || ''
-      })));
-      const newCategories = await Category.find({}).sort({ label: 1 });
-      return res.status(200).json({ success: true, data: newCategories });
+      try {
+        await Category.insertMany(FALLBACK_CATEGORIES);
+        const newCategories = await Category.find({}).sort({ label: 1 });
+        return res.status(200).json({ success: true, data: newCategories });
+      } catch (seedErr) {
+        // Even seeding failed (e.g. DB still unavailable) — return hardcoded fallback
+        console.warn('Could not seed categories, returning hardcoded fallback:', seedErr.message);
+        return res.status(200).json({ success: true, data: FALLBACK_CATEGORIES });
+      }
     }
 
     res.status(200).json({
@@ -23,11 +31,12 @@ exports.getCategories = async (req, res) => {
       data: categories,
     });
   } catch (error) {
-    console.error('Error in getCategories:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch categories',
-      error: error.message
+    // MongoDB unreachable (e.g. no internet / Atlas DNS failure) — return hardcoded fallback
+    console.error('Error in getCategories (returning fallback):', error.message);
+    return res.status(200).json({
+      success: true,
+      data: FALLBACK_CATEGORIES,
+      _fallback: true, // flag to indicate this came from fallback
     });
   }
 };

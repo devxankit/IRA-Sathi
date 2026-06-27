@@ -92,7 +92,7 @@ export function ProductsPage({ subRoute = null, navigate }) {
 
   // Fetch products
   const fetchProducts = useCallback(async () => {
-    const result = await getProducts()
+    const result = await getProducts({ limit: 500 })
     if (result.data?.products) {
       const formatted = result.data.products.map(formatProductForDisplay)
       setAllProductsList(formatted)

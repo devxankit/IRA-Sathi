@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Admin API Service
  * 
  * This file contains all API endpoints for the Admin dashboard.
@@ -148,15 +148,15 @@ function formatNumber(num) {
 function formatCurrency(amount) {
   if (amount >= 10000000) {
     // Crores
-    return `₹${(amount / 10000000).toFixed(1)} Cr`
+    return `â‚¹${(amount / 10000000).toFixed(1)} Cr`
   } else if (amount >= 100000) {
     // Lakhs
-    return `₹${(amount / 100000).toFixed(1)} L`
+    return `â‚¹${(amount / 100000).toFixed(1)} L`
   } else if (amount >= 1000) {
     // Thousands
-    return `₹${(amount / 1000).toFixed(1)}K`
+    return `â‚¹${(amount / 1000).toFixed(1)}K`
   }
-  return `₹${formatNumber(Math.round(amount))}`
+  return `â‚¹${formatNumber(Math.round(amount))}`
 }
 
 /**
@@ -304,7 +304,11 @@ export async function createCategory(categoryData) {
  * Transform backend product to frontend format
  */
 function transformProduct(backendProduct) {
+  const productLevelUnit = backendProduct.weight?.unit || backendProduct.stockUnit || 'kg'
   return {
+    // Spread first so explicit fields below can override
+    ...backendProduct,
+    // Explicit mapped fields
     id: backendProduct._id?.toString() || backendProduct.id,
     name: backendProduct.name,
     description: backendProduct.description,
@@ -312,19 +316,27 @@ function transformProduct(backendProduct) {
     stock: backendProduct.stock || 0,
     actualStock: backendProduct.actualStock !== undefined ? backendProduct.actualStock : (backendProduct.stock || 0),
     displayStock: backendProduct.displayStock !== undefined ? backendProduct.displayStock : (backendProduct.stock || 0),
-    stockUnit: backendProduct.weight?.unit || backendProduct.stockUnit || 'kg',
+    stockUnit: productLevelUnit,
     vendorPrice: backendProduct.priceToVendor || 0,
     userPrice: backendProduct.priceToUser || 0,
     expiry: backendProduct.expiry ? new Date(backendProduct.expiry).toISOString().split('T')[0] : null,
-    visibility: backendProduct.isActive !== false ? 'active' : 'inactive', // Default to active
+    visibility: backendProduct.isActive !== false ? 'active' : 'inactive',
     batchNumber: backendProduct.batchNumber || '',
     images: backendProduct.images || [],
     sku: backendProduct.sku,
     brand: backendProduct.brand,
     tags: backendProduct.tags || [],
     specifications: backendProduct.specifications,
-    // Keep all original fields for reference
-    ...backendProduct,
+    // Explicitly map attributeStocks preserving each entry's own stockUnit
+    attributeStocks: Array.isArray(backendProduct.attributeStocks)
+      ? backendProduct.attributeStocks.map(entry => ({
+          ...entry,
+          stockUnit: entry.stockUnit || productLevelUnit,
+          attributes: entry.attributes instanceof Map
+            ? Object.fromEntries(entry.attributes)
+            : (entry.attributes || {}),
+        }))
+      : [],
   }
 }
 
@@ -2602,13 +2614,13 @@ export async function getFinanceData() {
       {
         id: 'user-min',
         label: 'Minimum User Order',
-        value: `₹${(params.minimumUserOrder || 2000).toLocaleString('en-IN')}`,
+        value: `â‚¹${(params.minimumUserOrder || 2000).toLocaleString('en-IN')}`,
         meta: 'Effective since Apr 2024',
       },
       {
         id: 'vendor-min',
         label: 'Minimum Vendor Purchase',
-        value: `₹${((params.minimumVendorPurchase || 50000) / 1000).toFixed(0)}K`,
+        value: `â‚¹${((params.minimumVendorPurchase || 50000) / 1000).toFixed(0)}K`,
         meta: 'Applies to all vendor types',
       },
     ]
@@ -2625,13 +2637,13 @@ export async function getFinanceData() {
         label: 'Total Outstanding',
         progress: totalLimit > 0 ? Math.round((totalOutstanding / totalLimit) * 100) : 0,
         tone: 'warning',
-        meta: `₹${(totalOutstanding / 10000000).toFixed(2)} Cr in recovery process`,
+        meta: `â‚¹${(totalOutstanding / 10000000).toFixed(2)} Cr in recovery process`,
       },
       {
         label: 'Current Cycle Recovery',
         progress: recovery.recovery?.recoveryRate || 54,
         tone: 'success',
-        meta: `₹${((recovery.recovery?.recoveredAmount || 0) / 100000).toFixed(0)} L collected`,
+        meta: `â‚¹${((recovery.recovery?.recoveredAmount || 0) / 100000).toFixed(0)} L collected`,
       },
       {
         label: 'Delayed Accounts',
@@ -2809,7 +2821,7 @@ export async function getOutstandingCredits() {
               label: 'Total Outstanding',
               progress: Math.round(totalOutstandingProgress),
               tone: 'warning',
-              meta: `₹${(totalOutstanding / 10000000).toFixed(2)} Cr in recovery process`,
+              meta: `â‚¹${(totalOutstanding / 10000000).toFixed(2)} Cr in recovery process`,
             },
             {
               label: 'Current Cycle Recovery',
@@ -2865,7 +2877,7 @@ export async function getRecoveryStatus(params = {}) {
             {
               id: 'REC-001',
               title: 'Total Outstanding Recovery',
-              description: `₹${((recovery.totalOutstanding || 0) / 10000000).toFixed(2)} Cr in recovery process`,
+              description: `â‚¹${((recovery.totalOutstanding || 0) / 10000000).toFixed(2)} Cr in recovery process`,
               amount: recovery.totalOutstanding || 0,
               progress: Math.round(progress),
               status: recovery.pendingAmount > 0 ? 'in_progress' : 'completed',
@@ -2874,7 +2886,7 @@ export async function getRecoveryStatus(params = {}) {
             {
               id: 'REC-002',
               title: 'Current Cycle Recovery',
-              description: `₹${((recovery.recoveredAmount || 0) / 100000).toFixed(0)} L collected`,
+              description: `â‚¹${((recovery.recoveredAmount || 0) / 100000).toFixed(0)} L collected`,
               amount: recovery.recoveredAmount || 0,
               progress: Math.round(progress),
               status: 'in_progress',
@@ -3506,7 +3518,7 @@ export async function getAnalyticsData(params = {}) {
         },
         {
           label: 'Total Revenue',
-          value: `₹${(totalRevenue / 10000000).toFixed(1)} Cr`,
+          value: `â‚¹${(totalRevenue / 10000000).toFixed(1)} Cr`,
           change: '+9.6%', // TODO: Calculate change from previous period
         },
         {
@@ -3517,7 +3529,7 @@ export async function getAnalyticsData(params = {}) {
         {
           label: 'Top Vendor',
           value: topVendor?.vendorName || 'N/A',
-          change: `₹${((topVendor?.revenue || 0) / 10000000).toFixed(1)} Cr`,
+          change: `â‚¹${((topVendor?.revenue || 0) / 10000000).toFixed(1)} Cr`,
         },
       ]
 
@@ -3656,14 +3668,14 @@ export function initializeRealtimeConnection(onNotification) {
       {
         type: 'vendor_purchase_request',
         title: 'Vendor Purchase Request',
-        message: 'HarvestLink Pvt Ltd requested credit purchase of ₹50,000',
+        message: 'HarvestLink Pvt Ltd requested credit purchase of â‚¹50,000',
         timestamp: new Date().toISOString(),
         data: { requestId: 'CR-123', vendorId: 'VND-131', amount: 50000 },
       },
       {
         type: 'seller_withdrawal_request',
         title: 'Seller Withdrawal Request',
-        message: 'Priya Nair requested withdrawal of ₹25,000',
+        message: 'Priya Nair requested withdrawal of â‚¹25,000',
         timestamp: new Date().toISOString(),
         data: { requestId: 'WD-456', sellerId: 'SLR-883', amount: 25000 },
       },

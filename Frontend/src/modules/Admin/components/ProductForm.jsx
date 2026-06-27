@@ -8,6 +8,22 @@ const STOCK_UNITS = ['mg', 'g', 'kg', 'ml', 'L', 'bag', 'unit', 'packet', 'bottl
 
 import { useAdminApi } from '../hooks/useAdminApi'
 
+// Default fallback categories — shown if API/MongoDB is unreachable
+const DEFAULT_CATEGORIES = [
+  { value: 'npk', label: 'NPK Fertilizers', description: 'Balanced NPK fertilizers' },
+  { value: 'nitrogen', label: 'Nitrogen Fertilizers', description: 'High nitrogen content fertilizers for vegetative growth' },
+  { value: 'phosphorus', label: 'Phosphorus Fertilizers', description: 'Phosphorus-rich fertilizers for root development' },
+  { value: 'potassium', label: 'Potassium Fertilizers', description: 'Potassium fertilizers for fruit development' },
+  { value: 'organic', label: 'Organic Fertilizers', description: 'Natural and organic fertilizers' },
+  { value: 'biofertilizer', label: 'Biofertilizers', description: 'Microbial fertilizers that enhance soil fertility' },
+  { value: 'micronutrient', label: 'Micronutrient Fertilizers', description: 'Essential trace elements like zinc, iron, copper' },
+  { value: 'liquid', label: 'Liquid Fertilizers', description: 'Water-soluble and liquid form fertilizers' },
+  { value: 'granular', label: 'Granular Fertilizers', description: 'Solid granular fertilizers for slow-release application' },
+  { value: 'foliar', label: 'Foliar Fertilizers', description: 'Fertilizers applied directly to plant leaves' },
+  { value: 'soil-conditioner', label: 'Soil Conditioners', description: 'Fertilizers that improve soil structure' },
+  { value: 'specialty', label: 'Specialty Fertilizers', description: 'Specialized fertilizers for specific crops or conditions' },
+]
+
 // Category-specific attributes configuration
 const CATEGORY_ATTRIBUTES = {
   npk: [
@@ -75,7 +91,7 @@ const CATEGORY_ATTRIBUTES = {
 export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
   const [formData, setFormData] = useState({
     name: '',
-    category: '', // No default
+    category: 'npk', // Default category
     shortDescription: '', // Short description for product cards
     description: '', // Long description for product details page
     actualStock: '',
@@ -98,7 +114,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
   
   // Dynamic categories state
   const { getCategories, createCategory } = useAdminApi()
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState(DEFAULT_CATEGORIES)
   const [isAddingCategory, setIsAddingCategory] = useState(false)
   const [newCategoryLabel, setNewCategoryLabel] = useState('')
   const [newCategoryDesc, setNewCategoryDesc] = useState('')
@@ -110,25 +126,61 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
     const fetchCategories = async () => {
       try {
         const res = await getCategories()
-        if (res.success && res.data && res.data.length > 0) {
-          if (mounted) {
-            setCategories(res.data.map(c => ({
+        if (mounted) {
+          if (res.success && res.data && res.data.length > 0) {
+            const fetchedCategories = res.data.map(c => ({
               value: c.id,
               label: c.label,
               description: c.description
-            })))
+            }))
+            // If editing a product, ensure product's existing category is in list
+            if (product && product.category) {
+              const existsInList = fetchedCategories.some(c => c.value === product.category)
+              if (!existsInList) {
+                fetchedCategories.unshift({
+                  value: product.category,
+                  label: product.category.charAt(0).toUpperCase() + product.category.slice(1).replace(/-/g, ' '),
+                  description: '(Existing category)'
+                })
+              }
+            }
+            setCategories(fetchedCategories)
+            // Only auto-select first category for new products
             if (!formData.category && !product) {
-               setFormData(prev => ({ ...prev, category: res.data[0].id }))
+              setFormData(prev => ({ ...prev, category: res.data[0].id }))
+            }
+          } else {
+            // API returned no categories — use DEFAULT_CATEGORIES as fallback
+            let fallback = [...DEFAULT_CATEGORIES]
+            if (product && product.category) {
+              const exists = fallback.some(c => c.value === product.category)
+              if (!exists) fallback.unshift({ value: product.category, label: product.category.charAt(0).toUpperCase() + product.category.slice(1).replace(/-/g, ' '), description: '(Existing category)' })
+            }
+            setCategories(fallback)
+            if (!formData.category && !product) {
+              setFormData(prev => ({ ...prev, category: fallback[0].value }))
             }
           }
         }
       } catch (err) {
-        console.error('Failed to fetch categories:', err)
+        console.error('Failed to fetch categories (using fallback):', err.message)
+        // On any error — load DEFAULT_CATEGORIES so the dropdown is never empty
+        if (mounted) {
+          let fallback = [...DEFAULT_CATEGORIES]
+          if (product && product.category) {
+            const exists = fallback.some(c => c.value === product.category)
+            if (!exists) fallback.unshift({ value: product.category, label: product.category.charAt(0).toUpperCase() + product.category.slice(1).replace(/-/g, ' '), description: '(Existing category)' })
+          }
+          setCategories(fallback)
+          if (!formData.category && !product) {
+            setFormData(prev => ({ ...prev, category: fallback[0].value }))
+          }
+        }
       }
     }
     fetchCategories()
     return () => { mounted = false }
-  }, [getCategories])
+  }, [getCategories, product])
 
   const handleAddCategory = async () => {
     if (!newCategoryLabel.trim()) return;
@@ -214,8 +266,8 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       // Convert prices to string if they're numbers
       const vendorPriceString = product.vendorPrice != null ? String(product.vendorPrice) : ''
       const userPriceString = product.userPrice != null ? String(product.userPrice) : ''
-      const vendorPriceValue = vendorPriceString.replace(/[₹,]/g, '') || ''
-      const userPriceValue = userPriceString.replace(/[₹,]/g, '') || ''
+      const vendorPriceValue = vendorPriceString.replace(/[Ã¢â€šÂ¹,]/g, '') || ''
+      const userPriceValue = userPriceString.replace(/[Ã¢â€šÂ¹,]/g, '') || ''
 
       // Parse expiry date (assuming format like "Aug 2026" or ISO date)
       let expiryDate = ''
@@ -470,6 +522,9 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       // Sum up all attributeStocks
       actualStockValue = formData.attributeStocks.reduce((sum, stock) => sum + (parseFloat(stock.actualStock) || 0), 0)
       displayStockValue = formData.attributeStocks.reduce((sum, stock) => sum + (parseFloat(stock.displayStock) || 0), 0)
+      // Round to avoid floating point accumulation
+      actualStockValue = Math.round(actualStockValue * 100) / 100
+      displayStockValue = Math.round(displayStockValue * 100) / 100
 
       // Calculate weighted average prices based on stock quantities
       let totalStock = 0
@@ -484,8 +539,8 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       })
 
       if (totalStock > 0) {
-        vendorPriceValue = weightedVendorPrice / totalStock
-        userPriceValue = weightedUserPrice / totalStock
+        vendorPriceValue = Math.round((weightedVendorPrice / totalStock) * 100) / 100
+        userPriceValue = Math.round((weightedUserPrice / totalStock) * 100) / 100
       }
 
       // Use first entry's expiry and batchNumber as defaults (or leave empty)
@@ -494,10 +549,10 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       batchNumberValue = firstEntry.batchNumber || ''
     } else {
       // Use main fields
-      actualStockValue = parseFloat(formData.actualStock) || 0
-      displayStockValue = parseFloat(formData.displayStock) || 0
-      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? vendorPrice : 0
-      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? userPrice : 0
+      actualStockValue = Math.round((parseFloat(formData.actualStock) || 0) * 100) / 100
+      displayStockValue = Math.round((parseFloat(formData.displayStock) || 0) * 100) / 100
+      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? Math.round(vendorPrice * 100) / 100 : 0
+      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? Math.round(userPrice * 100) / 100 : 0
       expiryValue = formData.expiry
       batchNumberValue = formData.batchNumber || ''
     }
@@ -772,7 +827,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
             </div>
             {errors.displayStock && <p className="mt-1 text-xs text-red-600">{errors.displayStock}</p>}
             {formData.displayStock && parseFloat(formData.displayStock) > parseFloat(formData.actualStock || 0) && (
-              <p className="mt-1 text-xs text-yellow-600">⚠️ Display quantity exceeds actual quantity</p>
+              <p className="mt-1 text-xs text-yellow-600">Ã¢Å¡Â Ã¯Â¸Â Display quantity exceeds actual quantity</p>
             )}
           </div>
         </div>
