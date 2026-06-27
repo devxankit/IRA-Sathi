@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Calendar, Package, IndianRupee, Eye, EyeOff, Tag, X, Layers } from 'lucide-react'
 import { cn } from '../../../lib/cn'
 import { ImageUpload } from './ImageUpload'
@@ -111,7 +111,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
   const [tagInput, setTagInput] = useState('')
   const [errors, setErrors] = useState({})
   const [showAttributeStockForm, setShowAttributeStockForm] = useState(false)
-  
+
   // Dynamic categories state
   const { getCategories, createCategory } = useAdminApi()
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES)
@@ -622,7 +622,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
         <label htmlFor="category" className="mb-2 block text-sm font-bold text-gray-900">
           Fertilizer Category <span className="text-red-500">*</span>
         </label>
-        
+
         <div className="flex gap-2">
           {!isAddingCategory ? (
             <>
@@ -639,7 +639,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
                 )}
               >
                 {categories.length === 0 && <option value="" disabled>No categories found</option>}
-          {categories.map((cat) => (
+                {categories.map((cat) => (
                   <option key={cat.value} value={cat.value}>
                     {cat.label} - {cat.description}
                   </option>

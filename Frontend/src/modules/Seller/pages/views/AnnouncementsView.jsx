@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { sellerSnapshot } from '../../services/sellerData'
 import { cn } from '../../../../lib/cn'
 import { BellIcon, TargetIcon, SparkIcon, ShareIcon } from '../../components/icons'

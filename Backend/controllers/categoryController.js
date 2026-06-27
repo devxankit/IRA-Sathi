@@ -12,7 +12,7 @@ const FALLBACK_CATEGORIES = FERTILIZER_CATEGORIES.map(c => ({
 exports.getCategories = async (req, res) => {
   try {
     const categories = await Category.find({}).sort({ label: 1 });
-    
+
     // Fallback: If DB is empty, seed with hardcoded list and return them
     if (categories.length === 0) {
       try {
