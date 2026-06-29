@@ -32,7 +32,7 @@ export const UPLOAD_WIDGET_OPTIONS = {
   clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
   maxFileSize: 5000000, // 5MB max file size
   cropping: true, // Enable cropping
-  croppingAspectRatio: 1, // Square images (1:1 ratio)
+  croppingAspectRatio: null, // Free cropping (no fixed aspect ratio)
   croppingDefaultSelectionRatio: 0.9,
   styles: {
     palette: {

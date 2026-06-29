@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Upload, X, Image as ImageIcon, Loader2, GripVertical } from 'lucide-react'
 import { CLOUDINARY_CONFIG } from '../config/cloudinary'
 import { cn } from '../../../lib/cn'
@@ -71,7 +71,7 @@ export function ImageUpload({ images = [], onChange, maxImages = 4, disabled = f
       clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
       maxFileSize: 5000000, // 5MB
       cropping: true,
-      croppingAspectRatio: 1, // Square images
+      croppingAspectRatio: null, // Free cropping (no fixed aspect ratio)
       croppingDefaultSelectionRatio: 0.9,
       folder: 'ira-sathi/products', // Organize images in folder
       transformation: [
