@@ -8,6 +8,22 @@ import * as userApi from '../../services/userApi'
 import { Trans } from '../../../../components/Trans'
 import { TransText } from '../../../../components/TransText'
 
+// Fallback categories when API is unavailable
+const FALLBACK_CATEGORIES = [
+  { id: 'npk', name: 'NPK Fertilizers', icon: '🧪', count: 0, description: 'Balanced NPK fertilizers' },
+  { id: 'nitrogen', name: 'Nitrogen Fertilizers', icon: '🌿', count: 0, description: 'High nitrogen content fertilizers' },
+  { id: 'phosphorus', name: 'Phosphorus Fertilizers', icon: '🌺', count: 0, description: 'Phosphorus-rich fertilizers' },
+  { id: 'potassium', name: 'Potassium Fertilizers', icon: '🍎', count: 0, description: 'Potassium fertilizers' },
+  { id: 'organic', name: 'Organic Fertilizers', icon: '🌱', count: 0, description: 'Natural and organic fertilizers' },
+  { id: 'biofertilizer', name: 'Biofertilizers', icon: '🦠', count: 0, description: 'Microbial fertilizers' },
+  { id: 'micronutrient', name: 'Micronutrient Fertilizers', icon: '⚗️', count: 0, description: 'Trace element fertilizers' },
+  { id: 'liquid', name: 'Liquid Fertilizers', icon: '💧', count: 0, description: 'Water-soluble fertilizers' },
+  { id: 'granular', name: 'Granular Fertilizers', icon: '⚪', count: 0, description: 'Solid granular fertilizers' },
+  { id: 'foliar', name: 'Foliar Fertilizers', icon: '🍃', count: 0, description: 'Leaf-applied fertilizers' },
+  { id: 'soil-conditioner', name: 'Soil Conditioners', icon: '🌍', count: 0, description: 'Soil structure improvers' },
+  { id: 'specialty', name: 'Specialty Fertilizers', icon: '⭐', count: 0, description: 'Specialized fertilizers' },
+]
+
 // Helper function to format category names - split "Fertilizer" word for better display
 const formatCategoryName = (name) => {
   if (!name) return name
@@ -48,12 +64,13 @@ export function HomeView({ onProductClick, onCategoryClick, onAddToCart, onSearc
       try {
         // Fetch categories
         const categoriesResult = await fetchCategories()
-        if (categoriesResult.data?.categories) {
+        if (categoriesResult.data?.categories && categoriesResult.data.categories.length > 0) {
           const cats = categoriesResult.data.categories
           setCategories(cats)
-          if (cats.length > 0) {
-            setSelectedCategory(cats[0].id)
-          }
+          setSelectedCategory(cats[0].id)
+        } else {
+          setCategories(FALLBACK_CATEGORIES)
+          setSelectedCategory(FALLBACK_CATEGORIES[0].id)
         }
 
         // Fetch popular products - limit to 4 for home screen
@@ -115,6 +132,10 @@ export function HomeView({ onProductClick, onCategoryClick, onAddToCart, onSearc
         }
       } catch (error) {
         console.error('Error loading data:', error)
+        setCategories(FALLBACK_CATEGORIES)
+        if (FALLBACK_CATEGORIES.length > 0) {
+          setSelectedCategory(FALLBACK_CATEGORIES[0].id)
+        }
       } finally {
         setLoading(false)
       }

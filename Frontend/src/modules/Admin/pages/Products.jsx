@@ -83,8 +83,8 @@ export function ProductsPage({ subRoute = null, navigate }) {
       ...product,
       actualStock: actualStockFormatted,
       vendorStock: vendorStockFormatted,
-      vendorPrice: `₹${Math.round(vendorPrice).toLocaleString('en-IN')}`,
-      userPrice: `₹${Math.round(userPrice).toLocaleString('en-IN')}`,
+      vendorPrice: `₹${vendorPrice % 1 === 0 ? vendorPrice.toLocaleString('en-IN') : vendorPrice.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      userPrice: `₹${userPrice % 1 === 0 ? userPrice.toLocaleString('en-IN') : userPrice.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       expiry: expiryFormatted,
       visibility: visibility,
     }

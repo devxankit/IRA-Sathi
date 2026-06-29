@@ -539,13 +539,14 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       })
 
       if (totalStock > 0) {
-        vendorPriceValue = Math.round(weightedVendorPrice / totalStock)
-        userPriceValue = Math.round(weightedUserPrice / totalStock)
+        // Preserve decimals (round to 2 decimal places only for floating point precision)
+        vendorPriceValue = Math.round((weightedVendorPrice / totalStock) * 100) / 100
+        userPriceValue = Math.round((weightedUserPrice / totalStock) * 100) / 100
       } else {
         // Fallback to first entry's prices
         const firstEntry = formData.attributeStocks[0]
-        vendorPriceValue = Math.round(parseFloat(firstEntry.vendorPrice) || 0)
-        userPriceValue = Math.round(parseFloat(firstEntry.userPrice) || 0)
+        vendorPriceValue = parseFloat(firstEntry.vendorPrice) || 0
+        userPriceValue = parseFloat(firstEntry.userPrice) || 0
       }
 
       // Use first entry's expiry and batchNumber as defaults (or leave empty)
@@ -553,11 +554,11 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       expiryValue = firstEntry.expiry || ''
       batchNumberValue = firstEntry.batchNumber || ''
     } else {
-      // Use main fields
+      // Use main fields - preserve decimal prices exactly as entered
       actualStockValue = Math.round((parseFloat(formData.actualStock) || 0) * 100) / 100
       displayStockValue = Math.round((parseFloat(formData.displayStock) || 0) * 100) / 100
-      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? Math.round(vendorPrice) : 0
-      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? Math.round(userPrice) : 0
+      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? vendorPrice : 0
+      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? userPrice : 0
       expiryValue = formData.expiry
       batchNumberValue = formData.batchNumber || ''
     }

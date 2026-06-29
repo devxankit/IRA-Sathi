@@ -61,15 +61,14 @@ export function LoginPageView({ onSuccess, onSwitchToSignup }) {
     setLoading(true)
 
     try {
-      const result = await userApi.verifyOTP({ phone: form.phone, otp: otpCode })
+      const result = await userApi.loginWithOtp({ phone: form.phone, otp: otpCode })
 
       if (result.success && result.data?.token) {
         localStorage.setItem('user_token', result.data.token)
 
-        // Fetch user profile
-        const profileResult = await userApi.getUserProfile()
-        if (profileResult.success && profileResult.data?.user) {
-          const userData = profileResult.data.user
+        // Dispatch user data from login response
+        const userData = result.data?.user
+        if (userData) {
           dispatch({
             type: 'AUTH_LOGIN',
             payload: {
@@ -80,16 +79,41 @@ export function LoginPageView({ onSuccess, onSwitchToSignup }) {
               location: userData.location || null,
             },
           })
+        } else {
+          // Fallback: try fetching profile
+          try {
+            const profileResult = await userApi.getUserProfile()
+            if (profileResult.success && profileResult.data?.user) {
+              const pData = profileResult.data.user
+              dispatch({
+                type: 'AUTH_LOGIN',
+                payload: {
+                  name: pData.name || 'User',
+                  phone: pData.phone || form.phone,
+                  email: pData.email || '',
+                  sellerId: pData.sellerId || null,
+                  location: pData.location || null,
+                },
+              })
+            }
+          } catch (_) { /* ignore profile fetch error */ }
         }
 
         if (onSuccess) {
           onSuccess()
         }
       } else {
-        setError(result.error?.message || 'Invalid OTP. Please try again.')
+        // Check if requires registration
+        if (result.requiresRegistration || result.error?.message?.includes('not found')) {
+          setError('User not found. Please register first.')
+        } else {
+          setError(result.error?.message || result.message || 'Invalid OTP. Please try again.')
+        }
       }
     } catch (err) {
-      setError(err.message || 'Invalid OTP. Please try again.')
+      // err can be { success: false, error: { message: '...' } } or a regular Error
+      const msg = err?.error?.message || err?.message || 'Invalid OTP. Please try again.'
+      setError(msg)
     } finally {
       setLoading(false)
     }
