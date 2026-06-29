@@ -1243,9 +1243,11 @@ exports.createProduct = async (req, res, next) => {
             .filter(stock => Object.keys(stock.attributes).length > 0); // Only include entries with at least one attribute
 
           product.attributeStocks = validAttributeStocks;
+          product.markModified('attributeStocks');
         } else {
           // Clear attributeStocks if empty array or null
           product.attributeStocks = [];
+          product.markModified('attributeStocks');
         }
       }
 
