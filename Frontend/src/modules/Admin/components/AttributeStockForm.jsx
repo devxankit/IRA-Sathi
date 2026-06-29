@@ -277,8 +277,8 @@ export function AttributeStockForm({
         ...stockData,
         actualStock: parseFloat(stock.actualStock) || 0,
         displayStock: parseFloat(stock.displayStock) || 0,
-        vendorPrice: parseFloat(stock.vendorPrice) || 0,
-        userPrice: parseFloat(stock.userPrice) || 0,
+        vendorPrice: Math.round(parseFloat(stock.vendorPrice) || 0),
+        userPrice: Math.round(parseFloat(stock.userPrice) || 0),
         // Use final attributes with proper key-value pairs (label -> value)
         attributes: finalAttributes,
       }

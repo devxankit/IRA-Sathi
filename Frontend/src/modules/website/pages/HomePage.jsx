@@ -373,7 +373,7 @@ export function HomePage() {
                     </div>
                     <h3 className="home-product-card__title">{product.name}</h3>
                     <div className="home-product-card__price">
-                      ₹{(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
+                      ₹{Math.round(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
                     </div>
                     <button
                       className="home-product-card__button"

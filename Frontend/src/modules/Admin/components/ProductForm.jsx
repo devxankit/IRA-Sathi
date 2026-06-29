@@ -539,8 +539,13 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       })
 
       if (totalStock > 0) {
-        vendorPriceValue = Math.round((weightedVendorPrice / totalStock) * 100) / 100
-        userPriceValue = Math.round((weightedUserPrice / totalStock) * 100) / 100
+        vendorPriceValue = Math.round(weightedVendorPrice / totalStock)
+        userPriceValue = Math.round(weightedUserPrice / totalStock)
+      } else {
+        // Fallback to first entry's prices
+        const firstEntry = formData.attributeStocks[0]
+        vendorPriceValue = Math.round(parseFloat(firstEntry.vendorPrice) || 0)
+        userPriceValue = Math.round(parseFloat(firstEntry.userPrice) || 0)
       }
 
       // Use first entry's expiry and batchNumber as defaults (or leave empty)
@@ -551,11 +556,15 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       // Use main fields
       actualStockValue = Math.round((parseFloat(formData.actualStock) || 0) * 100) / 100
       displayStockValue = Math.round((parseFloat(formData.displayStock) || 0) * 100) / 100
-      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? Math.round(vendorPrice * 100) / 100 : 0
-      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? Math.round(userPrice * 100) / 100 : 0
+      vendorPriceValue = !isNaN(vendorPrice) && vendorPrice > 0 ? Math.round(vendorPrice) : 0
+      userPriceValue = !isNaN(userPrice) && userPrice > 0 ? Math.round(userPrice) : 0
       expiryValue = formData.expiry
       batchNumberValue = formData.batchNumber || ''
     }
+
+    const finalStockUnit = (formData.attributeStocks && formData.attributeStocks.length > 0 && formData.attributeStocks[0].stockUnit)
+      ? formData.attributeStocks[0].stockUnit
+      : formData.stockUnit
 
     const submitData = {
       name: formData.name.trim(),
@@ -565,7 +574,7 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
       longDescription: formData.description.trim(), // Also save as longDescription for clarity
       actualStock: actualStockValue,
       displayStock: displayStockValue,
-      stockUnit: formData.stockUnit,
+      stockUnit: finalStockUnit,
       priceToVendor: vendorPriceValue > 0 ? vendorPriceValue : undefined,
       priceToUser: userPriceValue > 0 ? userPriceValue : undefined,
       ...(expiryValue && { expiry: expiryValue }),
@@ -584,8 +593,13 @@ export function ProductForm({ product, onSubmit, onCancel, loading = false }) {
 
   // Handle attribute stock form save
   const handleAttributeStockSave = (stocks) => {
+    const mainUnit = (stocks && stocks.length > 0 && stocks[0].stockUnit) 
+      ? stocks[0].stockUnit 
+      : formData.stockUnit
+
     setFormData((prev) => ({
       ...prev,
+      stockUnit: mainUnit,
       attributeStocks: stocks.map((stock, index) => ({
         ...stock,
         id: stock.id || Date.now() + index, // Ensure each has an ID

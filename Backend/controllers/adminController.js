@@ -896,8 +896,8 @@ exports.createProduct = async (req, res, next) => {
 
       // Create product
       // Handle prices - if using attributeStocks and main prices are undefined, calculate from attributeStocks or use defaults
-      let finalPriceToVendor = priceToVendor;
-      let finalPriceToUser = priceToUser;
+      let finalPriceToVendor = priceToVendor !== undefined ? Math.round(parseFloat(priceToVendor) || 0) : undefined;
+      let finalPriceToUser = priceToUser !== undefined ? Math.round(parseFloat(priceToUser) || 0) : undefined;
 
       if ((finalPriceToVendor === undefined || finalPriceToUser === undefined) && attributeStocks && Array.isArray(attributeStocks) && attributeStocks.length > 0) {
         // Calculate weighted average prices from attributeStocks
@@ -915,13 +915,13 @@ exports.createProduct = async (req, res, next) => {
         });
 
         if (totalStock > 0) {
-          finalPriceToVendor = weightedVendorPrice / totalStock;
-          finalPriceToUser = weightedUserPrice / totalStock;
+          finalPriceToVendor = Math.round(weightedVendorPrice / totalStock);
+          finalPriceToUser = Math.round(weightedUserPrice / totalStock);
         } else {
           // Fallback to first entry's prices
           const firstEntry = attributeStocks[0];
-          finalPriceToVendor = parseFloat(firstEntry.vendorPrice) || 0;
-          finalPriceToUser = parseFloat(firstEntry.userPrice) || 0;
+          finalPriceToVendor = Math.round(parseFloat(firstEntry.vendorPrice) || 0);
+          finalPriceToUser = Math.round(parseFloat(firstEntry.userPrice) || 0);
         }
       }
 
@@ -1008,8 +1008,8 @@ exports.createProduct = async (req, res, next) => {
             });
 
             // Validate prices
-            const vendorPriceValue = parseFloat(stock.vendorPrice);
-            const userPriceValue = parseFloat(stock.userPrice);
+            const vendorPriceValue = Math.round(parseFloat(stock.vendorPrice));
+            const userPriceValue = Math.round(parseFloat(stock.userPrice));
 
             if (isNaN(vendorPriceValue) || vendorPriceValue < 0) {
               throw new Error(`Invalid vendor price for attribute stock entry`);
@@ -1129,6 +1129,7 @@ exports.createProduct = async (req, res, next) => {
       if (updateData.stockUnit !== undefined) {
         product.weight = product.weight || {};
         product.weight.unit = updateData.stockUnit;
+        product.markModified('weight');
       }
 
       // Handle batchNumber
@@ -1215,8 +1216,8 @@ exports.createProduct = async (req, res, next) => {
               });
 
               // Validate prices
-              const vendorPriceValue = parseFloat(stock.vendorPrice);
-              const userPriceValue = parseFloat(stock.userPrice);
+              const vendorPriceValue = Math.round(parseFloat(stock.vendorPrice));
+              const userPriceValue = Math.round(parseFloat(stock.userPrice));
 
               if (isNaN(vendorPriceValue) || vendorPriceValue < 0) {
                 throw new Error(`Invalid vendor price for attribute stock entry`);
@@ -1246,6 +1247,14 @@ exports.createProduct = async (req, res, next) => {
           // Clear attributeStocks if empty array or null
           product.attributeStocks = [];
         }
+      }
+
+      // Round prices if updated directly
+      if (updateData.priceToVendor !== undefined) {
+        updateData.priceToVendor = Math.round(parseFloat(updateData.priceToVendor) || 0);
+      }
+      if (updateData.priceToUser !== undefined) {
+        updateData.priceToUser = Math.round(parseFloat(updateData.priceToUser) || 0);
       }
 
       // Update other fields (excluding handled fields)

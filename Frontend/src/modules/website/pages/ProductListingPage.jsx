@@ -356,7 +356,7 @@ export function ProductListingPage() {
                       </div>
                       <h3 className="product-listing-card__title">{product.name}</h3>
                       <div className="product-listing-card__price">
-                        ₹{(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
+                        ₹{Math.round(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
                       </div>
                       <button
                         className="product-listing-card__button"

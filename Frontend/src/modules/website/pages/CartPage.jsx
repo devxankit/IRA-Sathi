@@ -91,7 +91,7 @@ export function CartPage() {
     
     cart.forEach((item) => {
       const product = cartProducts[item.productId]
-      const unitPrice = item.unitPrice || item.price || (product ? (product.priceToUser || product.price || 0) : 0)
+      const unitPrice = Math.round(item.unitPrice || item.price || (product ? (product.priceToUser || product.price || 0) : 0))
       const variantAttrs = item.variantAttributes || {}
       const hasVariants = variantAttrs && typeof variantAttrs === 'object' && Object.keys(variantAttrs).length > 0
       const key = item.productId
@@ -417,7 +417,7 @@ export function CartPage() {
                         {product.name}
                       </h4>
                       <div className="cart-page__suggested-price">
-                        ₹{(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
+                        ₹{Math.round(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
                       </div>
                       <button
                         type="button"

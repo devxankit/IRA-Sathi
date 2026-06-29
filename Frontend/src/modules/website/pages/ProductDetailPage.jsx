@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from '../../../context/TranslationContext'
 import { Layout, Container } from '../components/Layout'
@@ -235,17 +235,17 @@ export function ProductDetailPage() {
   const currentPrice = useMemo(() => {
     if (!product) return 0
     if (selectedAttributeStock) {
-      return selectedAttributeStock.userPrice || 0
+      return Math.round(selectedAttributeStock.userPrice || 0)
     }
-    return product.priceToUser || product.price || 0
+    return Math.round(product.priceToUser || product.price || 0)
   }, [product, selectedAttributeStock])
 
   const originalPrice = useMemo(() => {
     if (!product) return 0
     if (selectedAttributeStock && selectedAttributeStock.originalPrice) {
-      return selectedAttributeStock.originalPrice
+      return Math.round(selectedAttributeStock.originalPrice)
     }
-    return product.originalPrice || product.priceToUser || product.price || 0
+    return Math.round(product.originalPrice || product.priceToUser || product.price || 0)
   }, [product, selectedAttributeStock])
 
   const currentStockUnit = useMemo(() => {
@@ -280,7 +280,7 @@ export function ProductDetailPage() {
     return selectedVariants.reduce((total, variant) => {
       const variantKey = getVariantKey(variant)
       const variantQty = variantQuantities[variantKey] || 1
-      return total + ((variant.userPrice || variant.priceToUser || 0) * variantQty)
+      return total + (Math.round(variant.userPrice || variant.priceToUser || 0) * variantQty)
     }, 0)
   }, [selectedVariants, variantQuantities, getVariantKey])
 
@@ -676,7 +676,7 @@ export function ProductDetailPage() {
                         const variantKey = getVariantKey(variantStock)
                         const variantQty = variantQuantities[variantKey] || 1
                         const maxQty = variantStock.displayStock || variantStock.actualStock || 999
-                        const variantPrice = variantStock.userPrice || variantStock.priceToUser || 0
+                        const variantPrice = Math.round(variantStock.userPrice || variantStock.priceToUser || 0)
 
                         return (
                           <div
@@ -983,7 +983,7 @@ export function ProductDetailPage() {
                     </div>
                     <h3 className="home-product-card__title">{similarProduct.name}</h3>
                     <div className="home-product-card__price">
-                      ₹{(similarProduct.priceToUser || similarProduct.price || 0).toLocaleString('en-IN')}
+                      ₹{Math.round(similarProduct.priceToUser || similarProduct.price || 0).toLocaleString('en-IN')}
                     </div>
                     <button
                       className="home-product-card__button"

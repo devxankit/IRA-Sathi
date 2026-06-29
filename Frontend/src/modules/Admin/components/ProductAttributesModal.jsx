@@ -172,7 +172,7 @@ export function ProductAttributesModal({ isOpen, onClose, product, onEdit }) {
                     <div className="rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-purple-100/50 p-4">
                       <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Vendor Price</p>
                       <p className="text-2xl font-bold text-purple-700">
-                        ₹{currentStock.vendorPrice?.toLocaleString('en-IN') || 0}
+                        ₹{Math.round(currentStock.vendorPrice || 0).toLocaleString('en-IN')}
                       </p>
                       <p className="text-xs text-gray-600 mt-1">per {currentStock.stockUnit || 'kg'}</p>
                     </div>
@@ -180,7 +180,7 @@ export function ProductAttributesModal({ isOpen, onClose, product, onEdit }) {
                     <div className="rounded-xl border border-orange-200 bg-gradient-to-br from-orange-50 to-orange-100/50 p-4">
                       <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">User Price</p>
                       <p className="text-2xl font-bold text-orange-700">
-                        ₹{currentStock.userPrice?.toLocaleString('en-IN') || 0}
+                        ₹{Math.round(currentStock.userPrice || 0).toLocaleString('en-IN')}
                       </p>
                       <p className="text-xs text-gray-600 mt-1">per {currentStock.stockUnit || 'kg'}</p>
                     </div>

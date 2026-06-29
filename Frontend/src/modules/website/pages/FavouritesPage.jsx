@@ -149,7 +149,7 @@ export function FavouritesPage() {
                   </div>
                   <h3 className="favourites-page__card-title">{product.name}</h3>
                   <div className="favourites-page__card-price">
-                    ₹{(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
+                    ₹{Math.round(product.priceToUser || product.price || 0).toLocaleString('en-IN')}
                   </div>
                   <button
                     className="favourites-page__card-button"
