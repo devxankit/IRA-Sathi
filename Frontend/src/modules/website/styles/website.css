@@ -790,7 +790,8 @@
 .home-product-card__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 .home-product-card__wishlist {
@@ -1633,7 +1634,8 @@
 .product-listing-card__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 .product-listing-card__wishlist {
@@ -1922,7 +1924,8 @@
 .product-detail__main-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 .product-detail__thumbnails {
@@ -1956,7 +1959,8 @@
 .product-detail__thumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 /* Product Info */

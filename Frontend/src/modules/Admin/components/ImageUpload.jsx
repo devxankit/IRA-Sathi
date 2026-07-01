@@ -70,15 +70,13 @@ export function ImageUpload({ images = [], onChange, maxImages = 4, disabled = f
       multiple: false,
       clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
       maxFileSize: 5000000, // 5MB
-      cropping: true,
-      croppingAspectRatio: null, // Free cropping (no fixed aspect ratio)
-      croppingDefaultSelectionRatio: 0.9,
+      cropping: false, // No forced cropping - show full image
       folder: 'ira-sathi/products', // Organize images in folder
       transformation: [
         {
-          width: 800,
-          height: 800,
-          crop: 'limit',
+          width: 1200,
+          height: 1200,
+          crop: 'fit', // 'fit' preserves full image without cutting
           quality: 'auto:good', // Optimize quality and file size
           fetchFormat: 'auto', // Auto format (webp when supported)
         },
@@ -276,7 +274,7 @@ export function ImageUpload({ images = [], onChange, maxImages = 4, disabled = f
               <img
                 src={imageUrl}
                 alt={`Product image ${index + 1}`}
-                className="w-full h-full object-cover pointer-events-none"
+                className="w-full h-full object-contain pointer-events-none"
                 draggable={false}
                 onError={(e) => {
                   e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0U0RThFQiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5Q0EzQUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBub3QgZm91bmQ8L3RleHQ+PC9zdmc+'
